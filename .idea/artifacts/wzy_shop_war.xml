@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="wzy-shop:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>wzy-shop</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="wzy-shop-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="wzy-shop:war exploded" />
+    </root>
+  </artifact>
+</component>
