@@ -44,6 +44,10 @@ public class R {
         return this;
     }
 
+    public String toJson() {
+        return JSONObject.toJSONString(this);
+    }
+
     public int getCode() {
         return code;
     }

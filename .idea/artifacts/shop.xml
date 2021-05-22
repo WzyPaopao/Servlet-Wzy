@@ -12,6 +12,7 @@
           <element id="library" level="project" name="Maven: com.zaxxer:HikariCP:3.3.1" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.75" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="wzy-shop/web/Web" />
