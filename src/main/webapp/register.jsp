@@ -19,10 +19,11 @@
 <body>
 <form method="post" action="vip/vip.do" id="registerForm">
     用户名：<input type="text" name="username" id="username"> <span style="color: red" id="msg"></span><br>
-    密码：<input type="password" name="password"><br>
+    密码：<input type="password" name="password"><br/>
     性别：男<input type="radio" name="gender" value="男">
-         女<input type="radio" name="gender" value="女"><br>
-    <input type="button" value="提交" id="submitBtn">
+         女<input type="radio" name="gender" value="女"><br/>
+    <input type="file" name="profile"/>
+    <input type="button" value="提交" id="submitBtn"/>
 </form>
 
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.4/jquery.js"></script>

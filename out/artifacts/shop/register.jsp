@@ -41,13 +41,7 @@
         const url = "/shop/vip/checkUser.do?username=" + document.getElementById("username").value;
         $.get(url, function (data) {
             console.log(data);
-            console.log(data.code);
-            console.log(data.msg);
-            if (data.code === 2000) {
-                document.getElementById("msg").innerText = data.msg;
-            } else if (data.code === 5000) {
-                document.getElementById("msg").innerText = data.msg;
-            }
+            document.getElementById("msg").innerText = data.msg;
         });
     });
 </script>

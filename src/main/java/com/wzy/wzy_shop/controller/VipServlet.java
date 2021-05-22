@@ -6,9 +6,11 @@ import com.wzy.wzy_shop.service.impl.VipServiceImpl;
 import com.wzy.wzy_shop.util.PatternUtil;
 
 import javax.servlet.*;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 import java.io.IOException;
 
+@MultipartConfig
 public class VipServlet extends HttpServlet {
     private VipService vipService = new VipServiceImpl();
 
