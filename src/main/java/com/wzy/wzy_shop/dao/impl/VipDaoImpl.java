@@ -14,7 +14,7 @@ import java.util.List;
 public class VipDaoImpl extends BaseDao implements VipDao {
     @Override
     public int save(Vip vip) {
-        String sql = "insert into vip(username, password, gender, salt) values (?, ?, ?, ?)";
+        String sql = "insert into vip(username, password, gender, salt, profile) values (?, ?, ?, ?, ?)";
         Connection connection = null;
         PreparedStatement statement = null;
         int res = -1;
@@ -26,6 +26,7 @@ public class VipDaoImpl extends BaseDao implements VipDao {
             statement.setString(2, vip.getPassword());
             statement.setString(3, vip.getGender());
             statement.setString(4, vip.getSalt());
+            statement.setString(5, vip.getProfile());
             res = statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -17,7 +17,7 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="vip/vip.do" id="registerForm">
+<form method="post" action="vip/vip.do" id="registerForm" enctype="multipart/form-data">
     用户名：<input type="text" name="username" id="username"> <span style="color: red" id="msg"></span><br>
     密码：<input type="password" name="password"><br/>
     性别：男<input type="radio" name="gender" value="男">
