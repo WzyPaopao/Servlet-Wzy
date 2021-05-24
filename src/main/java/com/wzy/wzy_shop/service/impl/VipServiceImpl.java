@@ -28,4 +28,28 @@ public class VipServiceImpl implements VipService {
         List<Vip> vips = vipDao.findUserByUsername(username);
         return vips.size() > 0;
     }
+
+    @Override
+    public boolean login(Vip vip) {
+        // 根据用户名查找用户
+        List<Vip> vips = vipDao.findUserByUsername(vip.getUsername());
+        if (vips.size() == 0) {
+            return false;
+        }
+
+        // 对比密码
+        Vip vip1 = vips.get(0);
+        String salt = vip1.getSalt();
+        if (DigestUtils.md5Hex(salt + vip.getPassword()).equals(vip1.getPassword())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Vip getVipProfile(String username) {
+        List<Vip> vips = vipDao.findUserByUsername(username);
+        return vips.size() == 0 ? null : vips.get(0);
+    }
 }

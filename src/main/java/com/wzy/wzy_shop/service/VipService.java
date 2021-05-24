@@ -6,4 +6,8 @@ public interface VipService {
     int register(Vip vip);
 
     boolean checkUserIsExist(String username);
+
+    boolean login(Vip vip);
+
+    Vip getVipProfile(String username);
 }

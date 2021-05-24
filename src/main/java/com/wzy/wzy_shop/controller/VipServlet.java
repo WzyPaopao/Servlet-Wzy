@@ -8,10 +8,9 @@ import com.wzy.wzy_shop.util.PatternUtil;
 import javax.servlet.*;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.util.Calendar;
+import java.util.UUID;
 
 @MultipartConfig
 public class VipServlet extends HttpServlet {
@@ -36,26 +35,39 @@ public class VipServlet extends HttpServlet {
         Vip vip = new Vip(username, password, gender);
 
         // 处理文件
+        String rootPath = "F:/tmp/JavaProjects";
         Part profile = request.getPart("profile");
         InputStream inputStream = profile.getInputStream();
-        String fileName = profile.getSubmittedFileName();
-        OutputStream outputStream = new FileOutputStream("F:\\tmp\\JavaProjects\\wzy-shop-upload\\" + fileName);
-        byte[] buf = new byte[1024];
-        int len = 0;
-        while ((len = inputStream.read(buf)) != -1) {
-            outputStream.write(buf, 0, len);
-        }
-        inputStream.close();
-        outputStream.flush();
-        outputStream.close();
-
-        vip.setProfile(fileName);
-
-        int res = vipService.register(vip);
-        if (res > 0) {
-            request.getRequestDispatcher("/success.jsp").forward(request, response);
-        } else {
+        String fileName = UUID.randomUUID() + "_" + profile.getSubmittedFileName();
+        Calendar calendar = Calendar.getInstance();
+        String prePath = "/" + calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1);
+//        int hash = fileName.hashCode();
+//        int path = hash % 10;
+//        String prePath = "/" + path;
+        File file = new File(rootPath + "/wzy-shop-upload" + prePath);
+        boolean flag = file.mkdirs();
+        if (!flag) {
             request.getRequestDispatcher("/fail.jsp").forward(request, response);
+        } else {
+            fileName = prePath + "/" + fileName;
+            OutputStream outputStream = new FileOutputStream(rootPath + "/wzy-shop-upload" + fileName);
+            byte[] buf = new byte[1024];
+            int len = 0;
+            while ((len = inputStream.read(buf)) != -1) {
+                outputStream.write(buf, 0, len);
+            }
+            inputStream.close();
+            outputStream.flush();
+            outputStream.close();
+
+            vip.setProfile(fileName);
+
+            int res = vipService.register(vip);
+            if (res > 0) {
+                request.getRequestDispatcher("/success.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("/fail.jsp").forward(request, response);
+            }
         }
     }
 }

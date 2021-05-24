@@ -12,6 +12,15 @@
         <servlet-name>vipServlet</servlet-name>
         <url-pattern>/vip/vip.do</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>vipLogin</servlet-name>
+        <servlet-class>com.wzy.wzy_shop.controller.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>vipLogin</servlet-name>
+        <url-pattern>/vip/login.do</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>charsetFilter</filter-name>
@@ -19,6 +28,14 @@
     </filter>
     <filter-mapping>
         <filter-name>charsetFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>userFilter</filter-name>
+        <filter-class>com.wzy.wzy_shop.filter.UserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>userFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 </web-app>
